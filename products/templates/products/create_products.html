@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+ {% load static %} 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fakie</title>
+    
+    <link rel="stylesheet" type="text/css" href="{% static "forms/css/bootstrap.min.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "forms/css/fontawesome-all.min.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "forms/css/iofrm-style.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "forms/css/iofrm-theme23.css" %}">
+</head>
+<body>
+    <div class="form-body on-top-mobile">
+        <div class="website-logo">
+            <a href="{% url 'index'%}">
+                <div class="logo">
+                    <img class="logo-size" src="{% static "forms/images/FTM.png" %}" alt="">
+                </div>
+            </a>
+        </div>
+        <div class="row">
+            <div class="img-holder">
+                <div class="bg"></div>
+                <div class="info-holder simple-info">
+                    <div><img src="{% static "forms/images/graphic6.svg" %}" alt=""></div>
+                    <div style = "background:black; padding: 10px;"><h3>Register Your Products Here</h3></div>
+                    <div style = "background:black; padding: 10px;"><p>Fill the form, attach your product barcode and picture, <br> Serial number to get listed.</p></div>
+                </div>
+            </div>
+            <div class="form-holder">
+                <div class="form-content">
+                    <div class="form-items">
+                    {% if form.errors %}
+                        <div class="alert alert-danger">
+                            {{ form.errors }}
+                        </div>
+                        {% endif %}
+                        {% comment %} {{ form.as_p }} {% endcomment %}
+                        <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                            <div class="row">
+                                <div class="col-12 col-sm-10">
+                                    <input type="text" name="product_name" class="form-control" placeholder="Product name" maxlength="100" required="" id="id_product_name">
+                                </div>
+                                <div class="col-12 col-sm-10">
+                                    <input type="text" disabled class="form-control" placeholder="Product Manufacturer (Skip)" name="product_id" maxlength="50" id="id_product_manufacturer">
+                                </div>
+                                 <div class="col-12 col-sm-10">
+                                    <input type="text" disabled class="form-control" placeholder="Product Serial Number (Skip)" name="product_id" maxlength="50" required="" id="id_product_id">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 col-sm-4">
+                                    <label>Product Production Date</label>
+                                    <input type="date" class="form-control"  name="production_date" required="" id="id_production_date">
+                                </div>
+                                <div class="col-12 col-sm-4">
+                                    <label>Product Expiration Date</label>
+                                    <input type="date" class="form-control" name="expiry_date" required="" id="id_expiry_date">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <textarea class="form-control" name="product_description" placeholder="Tell us about your product" cols="40" rows="10" maxlength="500" required="" id="id_product_description"></textarea>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 col-sm-6">
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" name="product_image" accept="image/*" required="" id="id_product_image">
+                                        <label class="custom-file-label" for="validatedCustomFile">Product Image</label>
+                                    </div>
+                                </div>
+                                {% comment %} <div class="col-12 col-sm-6">
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" name="product_barcode" accept="image/*" required="" id="id_product_barcode">
+                                        <label class="custom-file-label" for="validatedCustomFile">Product Barcode</label>
+                                    </div>
+                                </div> {% endcomment %}
+                            </div>
+                            <div class="row top-padding">
+                                <div class="col-12 col-sm-6">
+                                    <input type="checkbox" id="chk1" required><label for="chk1">I agree on <a href="#">terms & conditions</a> of Fakie</label>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-button text-right">
+                                        <button id="submit" type="submit" class="ibtn less-padding">Submit Form</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<script src="{% static "forms/js/jquery.min.js" %}" ></script>
+<script src="{% static "forms/js/popper.min.js" %}" ></script>
+<script src="{% static "forms/js/bootstrap.min.js" %}" ></script>
+<script src="{% static "forms/js/main.js" %}" ></script>
+</body>
+</html>
+
+

@@ -1,0 +1,354 @@
+
+<!doctype html>
+<html lang="en">
+   {% load static %}
+   
+<head>
+      <!-- Required meta tags -->
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+     <!-- favicon -->
+      <link rel="icon" type="image/png" href="{% static "assets/images/FTM.png" %}">
+      <!-- Bootstrap CSS -->
+      <link rel="stylesheet" href="{% static "assets/vendors/bootstrap/css/bootstrap.min.css" media="all" %}">
+      <!-- jquery-ui css -->
+      <link rel="stylesheet" type="text/css" href="{% static "assets/vendors/jquery-ui/jquery-ui.min.css" %}">
+      <!-- fancybox box css -->
+      <link rel="stylesheet" type="text/css" href="{% static "assets/vendors/fancybox/dist/jquery.fancybox.min.css" %}">
+      <!-- Fonts Awesome CSS -->
+      <link rel="stylesheet" type="text/css" href="{% static "assets/vendors/fontawesome/css/all.min.css" %}">
+      <!-- Elmentkit Icon CSS -->
+      <link rel="stylesheet" type="text/css" href="{% static "assets/vendors/elementskit-icon-pack/assets/css/ekiticons.css" %}">
+      <!-- slick slider css -->
+      <link rel="stylesheet" type="text/css" href="{% static "assets/vendors/slick/slick.css" %}">
+      <link rel="stylesheet" type="text/css" href="{% static "assets/vendors/slick/slick-theme.css" %}">
+      <!-- google fonts -->
+      <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&amp;family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&amp;display=swap" rel="stylesheet">
+      <!-- Custom CSS -->
+      <link rel="stylesheet" type="text/css" href="{% static "assets/style.css" %}">
+      <title>About | Traveler – Travel & Trip Business HTML5 Template</title>
+   </head>
+   <body>
+      <div id="siteLoader" class="site-loader">
+         <div class="preloader-content">
+            <img src="assets/images/loader1.gif" alt="">
+         </div>
+      </div>
+      <div id="page" class="page">
+         <!-- ***site header html start*** -->
+         <header id="masthead" class="site-header">
+            <!-- header html start -->
+            <div class="top-header">
+               <div class="container">
+                  <div class="top-header-inner">
+                     <div class="header-contact text-left">
+                        <a href="telto:07085427519">
+                           <i aria-hidden="true" class="icon icon-phone-call2"></i>
+                           <div class="header-contact-details d-none d-sm-block">
+                              <span class="contact-label">For Further Inquires :</span>
+                              <h5 class="header-contact-no">07085427519</h5>
+                           </div>
+                        </a>
+                     </div>
+                     <div class="site-logo text-center">
+                        <h1 class="site-title">
+                           <a href="{% url 'index' %}">
+                              <img src="{% static "assets/images/FTM.png" %}" alt="Logo">
+                           </a>
+                        </h1>
+                     </div>
+                     <div class="header-icon text-right">
+                        <div class="header-search-icon d-inline-block">
+                           
+                        </div>
+                        <div class="offcanvas-menu d-inline-block">
+                           <a href="#">
+                              <i aria-hidden="true" class="icon icon-burger-menu"></i>
+                           </a>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="bottom-header">
+               <div class="container">
+                  <div class="bottom-header-inner d-flex justify-content-between align-items-center">
+                     <div class="header-social social-icon">
+                        <ul>
+                           <li>
+                              <a href="https://www.facebook.com/" target="_blank">
+                                 <i class="fab fa-facebook-f" aria-hidden="true"></i>
+                              </a>
+                           </li>
+                           <li>
+                              <a href="https://www.twitter.com/" target="_blank">
+                                 <i class="fab fa-twitter" aria-hidden="true"></i>
+                              </a>
+                           </li>
+                           <li>
+                              <a href="https://www.youtube.com/" target="_blank">
+                                 <i class="fab fa-youtube" aria-hidden="true"></i>
+                              </a>
+                           </li>
+                        </ul>
+                     </div>
+                     <div class="navigation-container d-none d-lg-block">
+                        <nav id="navigation" class="navigation">
+                           <ul>
+                              <li class="menu-active">
+                                 <a href="{% url 'index' %}">Home</a>
+                              </li>
+                              <li>
+                                 <a href="{% url 'about' %}">about us</a>
+                              </li>
+                           </ul>
+                        </nav>
+                     </div>
+                     <div class="header-btn">
+                        <a href="{% url 'register' %}" class="round-btn">REGISTER</a>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="mobile-menu-container"></div>
+         </header>
+         <!-- ***site header html end*** -->
+         <main id="content" class="site-main">
+            <section class="inner-page-wrap">
+               <!-- ***Inner Banner html start form here*** -->
+               <div class="inner-banner-wrap">
+                  <div class="inner-baner-container" style="background-image: url({% static "assets/images/fake.jpg" %});">
+                     <div class="container">
+                        <div class="inner-banner-content">
+                           <h1 class="page-title">About Us</h1>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <!-- ***Inner Banner html end here*** -->
+               <!-- ***about section html start form here*** -->
+               <div class="inner-about-wrap">
+                  <div class="container">
+                     <div class="row">
+                        <div class="col-lg-8">
+                           <div class="about-content">
+                              <figure class="about-image">
+                                 <img src="assets/images/img27.jpg" alt="">
+                                 <div class="about-image-content">
+                                    <h3>Our Fake Product Identification System has been the best for detecting counterfeit  products</h3>
+                                 </div>
+                              </figure>
+                              <h2>HOW WE ARE BEST FOR DETECTING FAKE PRODUCT!</h2>
+                              <p>In today's world, detecting fake products has become increasingly difficult. With the rise of e-commerce, counterfeiters have been able to easily create and distribute products that look and feel like the real thing. Fortunately, there are a few ways to detect counterfeit products, and they can help protect customers from wasting their money on fraudulent products.  </p>
+                              <p>The first step to detecting a fake product is to check the packaging. Counterfeiters often try to replicate the packaging of popular brands, but they can rarely do it perfectly. Look for any variations in the font, design, or size of the packaging; any discrepancies could indicate a fake product.</p>
+                              <p>Another way to detect a fake product is to compare it to an authentic version. Check the materials and components used; if they seem different or off in some way, it's likely a fake. Additionally, genuine products will usually have some form of authentication, like a serial number or hologram, that can help you verify its authenticity.
+
+Finally, it's important to be aware of any suspicious deals or prices that may be too good to be true. If a product is being sold for significantly lower than its usual price, it may be a counterfeit. Similarly, sellers who have multiple versions of the same product could be selling fake versions.</p>
+                           </div>
+                           <div class="client-slider white-bg">
+                              <figure class="client-item">
+                                 <img src="assets/images/client-img7.png" alt="">
+                              </figure>
+                              <figure class="client-item">
+                                 <img src="assets/images/client-img8.png" alt="">
+                              </figure>
+                              <figure class="client-item">
+                                 <img src="assets/images/client-img9.png" alt="">
+                              </figure>
+                              <figure class="client-item">
+                                 <img src="assets/images/client-img10.png" alt="">
+                              </figure>
+                              <figure class="client-item">
+                                 <img src="assets/images/client-img11.png" alt="">
+                              </figure>
+                           </div>
+                        </div>
+                        <div class="col-lg-4">
+                           <div class="icon-box">
+                              <div class="box-icon">
+                                 <i aria-hidden="true" class="fas fa-umbrella-beach"></i>
+                              </div>
+                              <div class="icon-box-content">
+                                 <h3>BENEFITS </h3>
+                                 <p>A fake product identification system is a valuable tool for businesses and consumers alike. It allows businesses to quickly and easily identify counterfeit products, thereby reducing costs associated with dealing with fake products and protecting their reputation.</p>
+                              </div>
+                           </div>
+                           <div class="icon-box">
+                              <div class="box-icon">
+                                 <i aria-hidden="true" class="fas fa-user-tag"></i>
+                              </div>
+                              <div class="icon-box-content">
+                                 <h3>USER FRIENDLY</h3>
+                                 <p>The user-friendly aspect of a fake product identification system can be seen in its ease of use and intuitive design. The system allows users to quickly and easily identify fake products by scanning the product code.</p>
+                              </div>
+                           </div>
+                           <div class="icon-box">
+                              <div class="box-icon">
+                                 <i aria-hidden="true" class="fas fa-headset"></i>
+                              </div>
+                              <div class="icon-box-content">
+                                 <h3>CUSTOMER SUPPORT</h3>
+                                 <p>Iure doloremque saepe? Ultrices mi aliquam dis tempore incididunt sint, cumque dis temp!</p>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <!-- ***about section html start form here*** -->
+               
+            </section>
+         </main>
+         <!-- ***site footer html start form here*** -->
+         <footer id="colophon" class="site-footer footer-primary">
+            <div class="top-footer">
+               <div class="container">
+                  <div class="upper-footer">
+                     <div class="row">
+                        <div class="col-lg-6 col-sm-8">
+                           <aside class="widget widget_text">
+                              <div class="footer-logo">
+                                 <a href="index.html"><img src="{% static "assets/images/FTM.png" %}" alt=""></a>
+                              </div>
+                              <div class="textwidget widget-text">
+Thank you for considering the Product Identification System for your product tracking needs. We look forward to helping you streamline your product tracking process.                              </div>
+                           </aside>
+                        </div>
+                        
+                        <div class="col-lg-6 col-sm-8">
+                           <aside class="widget widget_text">
+                              <h3 class="widget-title">CONTACT US</h3>
+                              <div class="textwidget widget-text">
+                                 <p>Feel free to contact and<br/> reach us !!</p>
+                                 <ul>
+                                    <li>
+                                       <a href="tel:+01988256203">
+                                          <i aria-hidden="true" class="icon icon-phone1"></i>
+                                          07085427519
+                                       </a>
+                                    </li>
+                                    <li>
+                                       <a href="mailtop:info@domain.com">
+                                          <i aria-hidden="true" class="icon icon-envelope1"></i>
+                                          agboemmanuel002@gmail.com
+                                       </a>
+                                    </li>
+                                    <li>
+                                       <i aria-hidden="true" class="icon icon-map-marker1"></i>
+                                       No 3 ILLECHUKWU STREET ENUGU NIGERIA
+                                    </li>
+                                 </ul>
+                              </div>
+                           </aside>
+                        </div>
+                        
+                     </div>
+                  </div>
+                  
+               </div>
+            </div>
+            <div class="bottom-footer">
+               <div class="container">
+                  <div class="copy-right text-center">Copyright &copy; 2023 FAKIE. All rights reserved.</div>
+               </div>
+            </div>
+         </footer>
+         <!-- ***site footer html end*** -->
+         <a id="backTotop" href="#" class="to-top-icon">
+            <i class="fas fa-chevron-up"></i>
+         </a>
+         <!-- ***custom search field html*** -->
+         <div class="header-search-form">
+            <div class="container">
+               <div class="header-search-container">
+                  <form class="search-form" role="search" method="get" >
+                     <input type="text" name="s" placeholder="Enter your text...">
+                  </form>
+                  <a href="#" class="search-close">
+                     <i class="fas fa-times"></i>
+                  </a>
+               </div>
+            </div>
+         </div>
+         <!-- ***custom search field html*** -->
+         <!-- ***custom top bar offcanvas html*** -->
+         <div id="offCanvas" class="offcanvas-container">
+            <div class="offcanvas-inner">
+               <div class="offcanvas-sidebar">
+                  <aside class="widget author_widget">
+                     <h3 class="widget-title">OUR PROPRIETOR / PROGRAMMER</h3>
+                     <div class="widget-content text-center"> 
+                        <div class="profile"> 
+                           <figure class="avatar"> 
+                              <img src="{% static "assets/images/img21.jpg" %}" alt=""> 
+                           </figure> 
+                           <div class="text-content"> 
+                              <div class="name-title"> 
+                                 <h4> Agbo Emmanuel ThankGod</h4> 
+                              </div> 
+                              <p>A software engineer that enjoys writing code and turning concepts into programs. Using Django (Python), I just created a website that gives IT newcomers a better knowledge of what they are getting into and a better road map to make the journey easier. I'd love to continue creating wonderful websites by fusing my love of learning with my expertise in software development.</p> 
+                           </div> 
+                           <div class="socialgroup"> 
+                              <ul> 
+                                 <li> <a target="_blank" href="#"> <i class="fab fa-facebook"></i> </a> </li> 
+                                 <li> <a target="_blank" href="#"> <i class="fab fa-google"></i> </a> </li> 
+                                 <li> <a target="_blank" href="#"> <i class="fab fa-twitter"></i> </a> </li> 
+                                 <li> <a target="_blank" href="#"> <i class="fab fa-instagram"></i> </a> </li> 
+                                 <li> <a target="_blank" href="#"> <i class="fab fa-pinterest"></i> </a> </li> 
+                              </ul> 
+                           </div> 
+                        </div> 
+                     </div>
+                  </aside>
+                  <aside class="widget widget_text text-center">
+                     <h3 class="widget-title">CONTACT US</h3>
+                     <div class="textwidget widget-text">
+                        <p>Feel free to contact and<br/> reach us !!</p>
+                        <ul>
+                           <li>
+                              <a href="tel:+07085427519">
+                                 <i aria-hidden="true" class="icon icon-phone1"></i>
+                                 +234 708 542 7519
+                              </a>
+                           </li>
+                           <li>
+                              <a href="mailtop:agboemmanuel002@gmail.com">
+                                 <i aria-hidden="true" class="icon icon-envelope1"></i>
+                                 agboemmanuel002@gmail.com
+                              </a>
+                           </li>
+                           <li>
+                              <i aria-hidden="true" class="icon icon-map-marker1"></i>
+                              No 3 CJ Illechukwu Street New GRA ENUGU
+                           </li>
+                        </ul>
+                     </div>
+                  </aside>
+               </div>
+               <a href="#" class="offcanvas-close">
+                  <i class="fas fa-times"></i>
+               </a>
+            </div>
+            <div class="overlay"></div>
+         </div>
+         <!-- ***custom top bar offcanvas html*** -->
+      </div>
+
+      <!-- JavaScript -->
+      <script src="{% static "assets/vendors/jquery/jquery.js" %}"></script>
+      <script src="{% static "assets/vendors/waypoint/waypoints.js" %}"></script>
+      <script src="{% static "assets/vendors/bootstrap/js/bootstrap.min.js" %}"></script>
+      <script src="{% static "assets/vendors/jquery-ui/jquery-ui.min.js" %}"></script>
+      <script src="{% static "assets/vendors/countdown-date-loop-counter/loopcounter.js" %}"></script>
+      <script src="{% static "assets/vendors/counterup/jquery.counterup.min.js" %}"></script>
+      <script src="../../../unpkg.com/imagesloaded%404.1.4/imagesloaded.pkgd.min.js"></script>
+      <script src="{% static "assets/vendors/masonry/masonry.pkgd.min.js" %}"></script>
+      <script src="{% static "assets/vendors/slick/slick.min.js" %}"></script>
+      <script src="{% static "assets/vendors/fancybox/dist/jquery.fancybox.min.js" %}"></script>
+      <script src="{% static "assets/vendors/slick-nav/jquery.slicknav.js" %}"></script>
+      <script src="{% static "assets/js/custom.min.js" %}"></script>
+   </body>
+
+<!-- Mirrored from demo.stairthemes.com/html/traveler/about.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 27 Sep 2022 22:29:30 GMT -->
+</html>

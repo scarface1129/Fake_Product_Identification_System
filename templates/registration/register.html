@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% load static %}  
+
+<!-- Mirrored from brandio.io/envato/iofrm/html/register25.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 27 Sep 2022 19:13:00 GMT -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fakie</title>
+    <link rel="stylesheet" type="text/css" href="{% static "forms/css/bootstrap.min.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "forms/css/fontawesome-all.min.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "forms/css/iofrm-style.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "forms/css/iofrm-theme29.css" %}">
+</head>
+<body>
+    <div class="form-body without-side">
+        <div class="website-logo">
+            <a href="{% url 'index' %}">
+                <div class="logo">
+                    <img class="logo-size" src="{% static "forms/images/logo-light.svg" %}" alt="">
+                </div>
+            </a>
+        </div>
+        <div class="row">
+            <div class="img-holder">
+                <div class="bg"></div>
+                <div class="info-holder">
+                    <img src="{% static "forms/images/graphic3.svg" %}" alt="">
+                </div>
+            </div>
+            <div class="form-holder">
+                <div class="form-content">
+                    <div class="form-items">
+                        <h3>Register new account</h3>
+                        <p>Access to the most powerfull tool in the entire design and web industry.</p>
+                         {% comment %} {% if form.errors.non_field_errors %}
+                            {{ form.errors.non_field_errors }}
+                        {% endif%} {% endcomment %}
+                        {% if form.errors %}
+                        <div class="alert alert-danger">
+                            {{ form.errors }}
+                        </div>
+                        {% endif %}
+                        {% if next %}
+                        {% if user.is_authenticated %}
+                            <p>Your account doesn't have access to this page. To proceed,
+                            please login with an account that has access.</p>
+                        {% else %}
+                            <p>Please login to see this page.</p>
+                        {% endif %}
+                        {% endif %}
+                        <form action="{% url 'register' %}" method="POST" enctype="multipart/form-data">{% csrf_token %}
+                            <input class="form-control" type="text" name="username" maxlength="150" required="" id="id_username" placeholder="Username">
+                            <input class="form-control" type="text" type="email" name="email" maxlength="254" id="id_email" placeholder="E-mail Address">
+                            <input class="form-control" type="password" name="password1" required="" id="id_password1" placeholder="Password">
+                            <input class="form-control" type="password" name="password2" placeholder="Repeat Password" required="" id="id_password2">
+                            <div class="form-button">
+                                <button id="submit" type="submit" class="ibtn">Register</button>
+                                <input type="hidden"  name="next" value="{{ next }}" />
+
+                            </div>
+                        </form>
+                        <div class="other-links">
+                            <div class="text">Or register with</div>
+                            <a href="#"><i class="fab fa-facebook-f"></i>Facebook</a><a href="#"><i class="fab fa-google"></i>Google</a><a href="#"><i class="fab fa-linkedin-in"></i>Linkedin</a>
+                        </div>
+                        <div class="page-links">
+                            <a href="{% url 'login'%}">Login to account</a>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<script src="{% static "forms/js/jquery.min.js" %}" ></script>
+<script src="{% static "forms/js/popper.min.js" %}" ></script>
+<script src="{% static "forms/js/bootstrap.min.js" %}" ></script>
+<script src="{% static "forms/js/main.js" %}" ></script>
+</body>
+
+</html>
+
