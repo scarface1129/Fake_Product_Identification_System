@@ -18,7 +18,9 @@ class ProductDetail(DetailView):
     def get(self, request, *args, **kwargs):
         pk = self.kwargs['pk']
         products = Product.objects.filter(product_id = pk)
-        print(products)
+        if not products :
+            getLocation()
+        
         context = {'products':products}
         return render(request, 'products/product_detail.html', context )
 
@@ -31,7 +33,7 @@ class CreateProduct(LoginRequiredMixin,CreateView):
         obj = form.save(commit=False)
         obj.product_id = code_generator(15)
         product_id = obj.product_id
-        barcode = generateCode(obj.product_name,'http://192.168.1.102:8000/product/'+product_id)
+        obj.barcode = generateCode(obj.product_name,'http://192.168.1.102:8000/product/'+'1122332221')
         obj.product_manufacturer = self.request.user
         return super(CreateProduct, self).form_valid(form)
     
@@ -66,3 +68,7 @@ def generateCode(name,text):
     img = qr.make_image()
     fileDirec = f'media/qrcodes/{name}'
     img.save(f'{fileDirec}.png') 
+    return f'{name}.png'
+
+def getLocation():
+    print('getting location')

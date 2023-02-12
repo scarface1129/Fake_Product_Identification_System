@@ -9,13 +9,14 @@ User = settings.AUTH_USER_MODEL
 
 
 class Product(models.Model):
-    product_name    =   models.CharField(max_length=100,blank=False, null=False)
-    product_manufacturer = models.ForeignKey(User, on_delete=models.CASCADE)
+    product_name        =   models.CharField(max_length=100,blank=False, null=False)
+    product_manufacturer= models.ForeignKey(User, on_delete=models.CASCADE)
     product_id          = models.CharField(max_length=50,blank=False, null=False)
-    product_image       = models.ImageField(blank=False, null=False)
+    product_image       = models.FileField(upload_to='media',blank=False, null=False)
     production_date     = models.DateField(auto_now_add=False)
     expiry_date         = models.DateField(auto_now_add=False)
     product_description = models.TextField(max_length=500)
+    barcode             = models.FileField(upload_to='media/barcode',blank=False, null=False, default='image')
     slug                = models.SlugField(null=True, blank=True)
     
     
@@ -33,6 +34,7 @@ def rl_pre_save_receiver(sender, instance, *args, **kwargs):
 pre_save.connect(rl_pre_save_receiver, sender=Product)
 
 
-class Barcodes(models.Model):
-    barcode       = models.ImageField(blank=False, null=False)
-    product       = models.ForeignKey('Product', on_delete=models.CASCADE)
+class FakeProduct(models.Model):
+    location    = models.CharField(max_length=1000)
+    time        = models.DateTimeField(auto_now_add=True)
+    user_ip     = models.CharField(max_length=60)

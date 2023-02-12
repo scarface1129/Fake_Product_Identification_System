@@ -17,13 +17,5 @@ class ProductCreate(forms.ModelForm):
             'product_description',
             
         ]
-
-class BarcodeForm(forms.ModelForm):
-    class Meta:
-        model = Barcodes 
-        fields = [             
-            'barcode',
-            'product',
-			          
-        ]
+ 
 
