@@ -1,16 +1,18 @@
 from django.shortcuts import render
 from django.views.generic import DetailView, View, CreateView, UpdateView, ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .models import Product
+from .models import *
 from django.shortcuts import render,get_object_or_404, redirect
 from .forms import *    
 from users.utils import code_generator
 from django.http import HttpResponseRedirect
+from django.contrib.sites.shortcuts import get_current_site
 from django.urls import reverse
-
+from django.http import HttpResponse
+from rest_framework import serializers
 import qrcode
-from tkinter import *
-from tkinter import messagebox
+# from tkinter import *
+# from tkinter import messagebox
 
 
 
@@ -18,8 +20,8 @@ class ProductDetail(DetailView):
     def get(self, request, *args, **kwargs):
         pk = self.kwargs['pk']
         products = Product.objects.filter(product_id = pk)
-        if not products :
-            getLocation()
+        # if not products :
+        #     getLocation(request)
         
         context = {'products':products}
         return render(request, 'products/product_detail.html', context )
@@ -33,7 +35,10 @@ class CreateProduct(LoginRequiredMixin,CreateView):
         obj = form.save(commit=False)
         obj.product_id = code_generator(15)
         product_id = obj.product_id
-        obj.barcode = generateCode(obj.product_name,'http://192.168.1.102:8000/product/'+'1122332221')
+        scheme = 'https' if self.request.is_secure() else 'http'
+        site = get_current_site(self.request)
+        # print('%s://%s' % (scheme, site))
+        obj.barcode = generateCode(obj.product_name,'%s://%s' % (scheme, site)+'/product/'+ product_id)
         obj.product_manufacturer = self.request.user
         return super(CreateProduct, self).form_valid(form)
     
@@ -58,7 +63,14 @@ def search(request, *args, **kwargs):
         pk = request.POST['pk']
     return HttpResponseRedirect(reverse("products:product_detail", kwargs={"pk" : pk}))
 
-
+def Fake(request):
+    if request.method == "POST":
+        longitude = request.POST['longitude']
+        latitude = request.POST['latitude']
+        time = ''
+        Fproduct = FakeProduct.objects.create_fakeProduct(latitude,longitude,time)
+        
+    return HttpResponseRedirect(reverse("index"))
 def generateCode(name,text):
     qr = qrcode.QRCode(version = 1,
             box_size = 10,
@@ -66,9 +78,8 @@ def generateCode(name,text):
     qr.add_data(text) 
     qr.make(fit = True) 
     img = qr.make_image()
-    fileDirec = f'media/qrcodes/{name}'
+    fileDirec = f'media/{name}'
     img.save(f'{fileDirec}.png') 
     return f'{name}.png'
 
-def getLocation():
-    print('getting location')
+    

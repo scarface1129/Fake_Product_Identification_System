@@ -108,7 +108,7 @@
                               </li>
                               <li>
                                  <form class="newsletter" method="POST" action="{% url 'products:search' %}"> {% csrf_token %}
-                                    <input class='px-5 my-2 ' type="text" name="pk" placeholder="Enter Product Serial NO">
+                                    <input class='px-5 my-2' required type="text" name="pk" placeholder="Enter Product Serial NO">
                                     <button type="submit" class="outline-btn outline-btn-dark mx-2 px-3 py-2">Search</button>
                                  </form>
                               </li>
@@ -117,7 +117,7 @@
                      </div>
                      <div class="header-btn">
                      {% if request.user.is_authenticated %}
-                        <a href="{% url 'login' %}" class="round-btn">LOGOUT</a>
+                        <a href="{% url 'logout' %}" class="round-btn">LOGOUT</a>
                      {% else %}
                         <a href="{% url 'register' %}" class="round-btn">REGISTER</a>
                      {% endif %}
@@ -143,7 +143,7 @@
 We are an innovative product identification system that provides unique identification codes for all your products. Our system is designed to streamline your product tracking process, so you can focus on the important things, like selling and marketing your products. 
 </p>
                               <div class="banner-btn">
-                                 <a href="about.html" class="round-btn">LEARN MORE</a>
+                                 <a href="{% url 'about' %}" class="round-btn">LEARN MORE</a>
                                  <a href="{% url 'register' %}" class="outline-btn outline-btn-white">REGISTER</a>
                               </div>
                            </div>

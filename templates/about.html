@@ -96,17 +96,21 @@
                      <div class="navigation-container d-none d-lg-block">
                         <nav id="navigation" class="navigation">
                            <ul>
-                              <li class="menu-active">
+                              <li >
                                  <a href="{% url 'index' %}">Home</a>
                               </li>
-                              <li>
+                              <li class="menu-active">
                                  <a href="{% url 'about' %}">about us</a>
                               </li>
                            </ul>
                         </nav>
                      </div>
                      <div class="header-btn">
+                        {% if request.user.is_authenticated %}
+                        <a href="{% url 'logout' %}" class="round-btn">LOGOUT</a>
+                     {% else %}
                         <a href="{% url 'register' %}" class="round-btn">REGISTER</a>
+                     {% endif %}
                      </div>
                   </div>
                </div>

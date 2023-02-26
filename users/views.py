@@ -2,6 +2,7 @@ from django.contrib.auth import get_user_model
 from django.views.generic import DetailView, View, CreateView, UpdateView, ListView
 from .forms import *
 from django.shortcuts import render,get_object_or_404, redirect
+from django.contrib.sites.shortcuts import get_current_site
 
 User = get_user_model()
 def activate_user_view(request, code=None, *args, **kwargs):

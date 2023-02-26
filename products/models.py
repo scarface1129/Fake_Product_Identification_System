@@ -16,7 +16,7 @@ class Product(models.Model):
     production_date     = models.DateField(auto_now_add=False)
     expiry_date         = models.DateField(auto_now_add=False)
     product_description = models.TextField(max_length=500)
-    barcode             = models.FileField(upload_to='media/barcode',blank=False, null=False, default='image')
+    barcode             = models.FileField(upload_to='media',blank=False, null=False, default='image')
     slug                = models.SlugField(null=True, blank=True)
     
     
@@ -33,8 +33,14 @@ def rl_pre_save_receiver(sender, instance, *args, **kwargs):
 
 pre_save.connect(rl_pre_save_receiver, sender=Product)
 
-
+class FakeProductManager(models.Manager):
+    def create_fakeProduct(self, latitude,longitude,time):
+        fakeProduct = self.create(latitude = latitude,longitude = longitude,time = time)
+        # do something with the book
+        return fakeProduct
 class FakeProduct(models.Model):
-    location    = models.CharField(max_length=1000)
+    longitude    = models.CharField(max_length=1000)
+    latitude    = models.CharField(max_length=1000)
     time        = models.DateTimeField(auto_now_add=True)
-    user_ip     = models.CharField(max_length=60)
+    
+    objects = FakeProductManager()

@@ -37,125 +37,6 @@
 		.lazyload-image .not-found-img img[data-src] {
 			padding-top: calc(499px / 556 * 100);
 		}
-
-
-
-.cookiesContent {
-  width: 50%;
-  margin: 100px auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #000;
-  color: #fff;
-  text-align: center;
-  border-radius: 20px;
-  padding: 30px 30px 70px;
-}
-  a.close {
-    width: 30px;
-    font-size: 20px;
-    color: #c0c5cb;
-    align-self: flex-end;
-    background-color: transparent;
-    border: none;
-    margin-bottom: 10px;
-  }
-  .cookiesContent img {
-    width: 82px;
-    margin-bottom: 15px;
-  }
-  p {
-    margin-bottom: 40px;
-    font-size: 18px;
-  }
-  .cookiesContent input.accept {
-    background-color: #ed6755;
-    border: none;
-    border-radius: 5px;
-    width: 200px;
-    padding: 14px;
-    font-size: 16px;
-    color: #fff;
-    box-shadow: 0px 6px 18px -5px rgba(237, 103, 85, 1);
-  }
-  
-.mpopup {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    padding-top: 100px;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgb(0,0,0);
-    background-color: rgba(0,0,0,0.4);
-}
-.modal-content {
-    position: relative;
-    background-color: #fff;
-    margin: auto;
-    padding: 0;
-    width: 450px;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
-    -webkit-animation-name: animatetop;
-    -webkit-animation-duration: 0.4s;
-    animation-name: animatetop;
-    animation-duration: 0.4s;
-    border-radius: 0.3rem;
-}
-.modal-header {
-    padding: 2px 12px;
-    background-color: #ffffff;
-    color: #333;
-    border-bottom: 1px solid #e9ecef;
-    border-top-left-radius: 0.3rem;
-    border-top-right-radius: 0.3rem;
-}
-.modal-header h2{
-    font-size: 1.25rem;
-    margin-top: 14px;
-    margin-bottom: 14px;
-}
-.modal-body {
-    padding: 2px 12px;
-}
-.modal-footer {
-    padding: 1rem;
-    background-color: #ffffff;
-    color: #333;
-    border-top: 1px solid #e9ecef;
-    border-bottom-left-radius: 0.3rem;
-    border-bottom-right-radius: 0.3rem;
-    text-align: right;
-}
-
-.close {
-    color: #888;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
-.close:hover, .close:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-/* add animation effects */
-@-webkit-keyframes animatetop {
-    from {top:-300px; opacity:0}
-    to {top:0; opacity:1}
-}
-
-@keyframes animatetop {
-    from {top:-300px; opacity:0}
-    to {top:0; opacity:1}
-}
-
-		
 	</style>
 	<script type="text/x-magento-init">
         {
@@ -357,11 +238,11 @@
 		</header>
 		<div class="breadcrumbs"></div>
 		<script type="text/x-magento-init">
-			{
-				".breadcrumbs": {
-					"breadcrumbs": {"categoryUrlSuffix":".html","useCategoryPathInUrl":0,"product":"Fake Product identification system"}        }
-			}
-		</script>
+    {
+        ".breadcrumbs": {
+            "breadcrumbs": {"categoryUrlSuffix":".html","useCategoryPathInUrl":0,"product":"Fake Product identification system"}        }
+    }
+</script>
 		<main id="maincontent" class="page-main"><a id="contentarea" tabindex="-1"></a>
 			<div class="page messages">
 				<div data-placeholder="messages"></div>
@@ -405,120 +286,7 @@
     }
 </script>
 			</div>
-			{% if products %}
-			{% for item in products %}
-			<div class="columns">
-				<div class="column main">
-					<div class="product-main-content">
-						<div class="product media"><a id="gallery-prev-area" tabindex="-1"></a>
-							<div class="gallery-placeholder _block-content-loading"
-								data-gallery-role="gallery-placeholder">
-								{% comment %} <a  href="/project/download" download> Download Document </a> {% endcomment %}
-								<img alt="main product photo" class="gallery-placeholder__image" src="{{item.product_image.url}}" />
-							</div>
-							
-						</div>
-						<div class="product-info-main">
-							<div class="page-title-wrapper&#x20;product">
-								<h1 class="page-title">
-									<span class="base" data-ui-id="page-title-wrapper" itemprop="name">Fake Product identification system</span>
-								</h1>
-							</div>
-							<div class="product-reviews-summary" itemscope itemtype="http://schema.org/AggregateRating">
-								<div class="rating-summary" >
-									<h5 style='color:red;'>NOTE: Clients should make sure that the picture of the barcode scanned</h5><h5 style='color:red;'> is a first hand printed photo</h5>
-								</div>
-								<div class="">
-									<p> {{item.product_name}}</p>
-								</div>
-								{% if request.user.is_authenticated %}
-								<div class="print">
-									<img alt='Barcode' style='width:100px; height:100px; margin-left:50px;' src="/media/{{item.barcode.url}}" />
-								</div>
-								<div>
-								<button style="padding:5px; margin: 5px 10px;"><a  href="/media/{{item.barcode.url}}" download> Download Barcode </a></button>
-								<button  style="padding:5px 15px; margin: 5px 10px; float:left;" onclick="window.print();return false;" /> Print Barcode</button>
-								</div>
-								{% endif %}
-							</div>
-							<div class="product-info-price">
-								<div class="price-box price-final_price" data-role="priceBox" data-product-id="4"
-									data-price-box="product-id-4"><span class="normal-price">
-
-
-										<span class="price-container price-final_price&#x20;tax&#x20;weee">
-											<span class="">Product Serial Number ----</span>
-											<span id="product-price-4" data-price-amount="NOT FOUND"
-												data-price-type="finalPrice" class="price-wrapper "><span
-													class="price">{{item.product_id}}</span></span>
-										</span>
-									</span>
-										<br>
-										<br>
-									<span class="price-container price-final_price&#x20;tax&#x20;weee">
-										<span class="">Product Production Date ----</span>
-										<span id="product-price-4" data-price-amount="NOT FOUND"
-											data-price-type="finalPrice" class="price-wrapper "><span
-												class="price">{{item.production_date}}</span></span>
-									</span>
-									<br>
-										<br>
-									<span class="price-container price-final_price&#x20;tax&#x20;weee">
-										<span class="">Product Expiration Date ----</span>
-										<span id="product-price-4" data-price-amount="NOT FOUND"
-											data-price-type="finalPrice" class="price-wrapper "><span
-												class="price">{{item.expiry_date}}</span></span>
-									</span>
-
-								</div>
-							</div>
-							{% comment %} <div class="share-dialog">
-								{% if item.sold_date == null %}
-								<a href="#"><span
-										class="btn btn-dark"><span class="text">Sold</span></span></a>
-								<a href="#"><span
-										class="btn btn-default"><span class="text">Something Stores</span></span></a>
-								{% endif %}
-							</div> {% endcomment %}
-							<div class="stock available" title="Availability">
-								<span>In stock</span>
-							</div>
-							<div class="availability only configurable-variation-qty" title="Qty">
-
-							</div>
-
-							<div class="product attribute overview">
-								<div class="value" itemprop="description">
-									<div class="delivery-info">
-										<div class="product-delivery-information">
-											<p class="delivery-information restock">{{item.product_description}}</p>
-										</div>
-									</div>
-								</div>
-							</div>
-
-							<div class="product-add-form">
-
-								<div class="fieldset" tabindex="0">
-									<div class="swatch-opt" data-role="swatch-options"></div>
-
-
-
-								</div>
-							</div>
-
-							<div id="instant-purchase" data-bind="scope:'instant-purchase'">
-								<!-- ko template: getTemplate() --><!-- /ko -->
-							</div>
-
-						</div>
-					</div>
-				</div>
-
-
-			</div>
-			{% endfor %}
-			{% else %}
+			
 				<div class="columns">
 				<div class="column main">
 					<div class="product-main-content">
@@ -619,7 +387,6 @@
 
 
 			</div>
-			
 			<script>
 				const options = {
 					enableHighAccuracy: true,
@@ -633,26 +400,9 @@
 					console.log(`Latitude : ${crd.latitude}`);
 					console.log(`Longitude: ${crd.longitude}`);
 					console.log(`More or less ${crd.accuracy} meters.`);
-					sessionStorage.setItem("Lat", crd.latitude);
-					sessionStorage.setItem("Long", crd.longitude);
-					var mpopup = document.getElementById('mpopupBox');
-					var mpLink = document.getElementById("mpopupLink");
-					var close = document.getElementsByClassName("close")[0];
-					function myGreeting(){
-						mpopup.style.display = "block";
-						gfg_Run();
-					}
-					setTimeout(myGreeting, 5000);
-					close.onclick = function() {
-						mpopup.style.display = "none";
-					};
-					var long = document.getElementById("longitude");
-					var lat = document.getElementById("latitude");
-					function gfg_Run() {
-						long.value = crd.longitude;
-						lat.value = crd.latitude;
-						
-					}
+					sessionStorage.setItem("Latitude", crd.latitude);
+					sessionStorage.setItem("Longitude", crd.longitude);
+
 					}
 					function error(err) {
 					console.warn(`ERROR(${err.code}): ${err.message}`);
@@ -662,27 +412,7 @@
 			</script>
 			
 			
-			{% endif %}
 	</div>
-<!-- Link to trigger modal -->
-<a href="javascript:void(0);" class="btn btn-primary" id="mpopupLink">Launch Modal Popup</a>
-
-<!-- Modal popup box -->
-<div id="mpopupBox" class="mpopup">
-    <!-- Modal content -->
-        <div class="cookiesContent" id="cookiesPopup">
-			{% comment %} <a href="{% url 'fake'%}" style='background:#000;color:#fff;' class="close">✖</a> {% endcomment %}
-			<img src="https://cdn-icons-png.flaticon.com/512/1047/1047711.png" alt="cookies-img" />
-			<p>Report Location to the Admin</p>
-			<form name='urlForm' method="post" action="{% url 'fake'%}" id="create" >
-			{% csrf_token %}
-			<input type="hidden" name="longitude" value="" id="longitude">
-			<input type="hidden" name="latitude" value="" id="latitude">
-			<input type="submit" name="submit" value="That's fine!" class="accept" >
-			</form>
-			
-		</div>
-</div>
 
  <footer id="colophon" class="site-footer footer-primary">
             <div class="top-footer">
@@ -692,7 +422,7 @@
                         <div class="col-lg-6 col-sm-8">
                            <aside class="widget widget_text">
                               <div class="footer-logo">
-                                 <a href="{% url 'index'%}"><img src="{% static "assets/images/FTM.png" %}" alt=""></a>
+                                 <a href="index.html"><img src="{% static "assets/images/FTM.png" %}" alt=""></a>
                               </div>
                               <div class="textwidget widget-text">
 Thank you for considering the Product Identification System for your product tracking needs. We look forward to helping you streamline your product tracking process.                              </div>
@@ -745,12 +475,12 @@ Thank you for considering the Product Identification System for your product tra
 		<a id="quickview-close" class="quickview-close"></a>
 		<div id="quickview-popup-content"></div>
 	</div>
-	{% comment %} <div data-url="https://blueskytechmage.com/outstock_v2/en1/themeoption/fakeorder/getitem/" id="purchase-fake-order"
+	<div data-url="https://blueskytechmage.com/outstock_v2/en1/themeoption/fakeorder/getitem/" id="purchase-fake-order"
 		data-seconds-hide="5" data-seconds-displayed="10" class="purchase-order fadeInUp animated hidden-xs"
 		style="display: none;">
 		<a class="purchase-close" href="javascript:void(0);"><i class="icon-x"></i></a>
 		<div class="product-purchase"></div>
-	</div> {% endcomment %}
+	</div>
 	</div>
 	</main>
 </body>

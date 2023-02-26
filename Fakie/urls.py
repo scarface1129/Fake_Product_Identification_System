@@ -20,11 +20,13 @@ from django.conf import settings
 from django.views.generic.base import TemplateView
 from django.conf.urls.static import static
 from users.views import Index, About
+from products.views import Fake
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', Index, name="index"),
     path('about_us', About, name="about"),
+    path('Fake', Fake, name="fake"),
     path('register/', RegisterView.as_view(), name=('register')),
     path('activate/<code>', activate_user_view, name='activate'),
     path('product/', include('products.urls')),
