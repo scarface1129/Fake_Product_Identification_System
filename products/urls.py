@@ -11,6 +11,9 @@ urlpatterns = [
     # path('getlocation/', getLocation, name=('location')),
     path('create/', CreateProduct.as_view(), name=('product_create')),
     path('fake/', Fake, name=('fake')),
+    path('map', Map, name=('map')),
+    path('update_fake', updateFakeProduct, name=('update_fake')),
+    path('fake_products/', FakeProductList.as_view(), name=('fake_list')),
     path('<pk>/', ProductDetail.as_view(), name=('product_detail')),
     
 ]

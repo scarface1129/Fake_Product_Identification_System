@@ -30,8 +30,8 @@
             <div class="form-holder">
                 <div class="form-content">
                     <div class="form-items">
-                        <h3>Login to account</h3>
-                        <p>Access to the most powerfull tool in the entire design and web industry.</p>
+                        <h3>Login to companies account</h3>
+                        <p>Access to the most powerfull tool in the entire.</p>
                         {% if form.errors %}
                         <div class="alert alert-danger">
                             {{ form.errors }}
@@ -47,10 +47,10 @@
                         {% endif %}
                         <form action="{% url "login" %}" method="POST" enctype="multipart/form-data">
                             {% csrf_token %}
-                            <input class="form-control" type="text" name="username" autofocus="" autocapitalize="none" placeholder="Username" autocomplete="username" maxlength="150" required="" id="id_username">
-                            <input class="form-control" type="password" name="password" autocomplete="current-password" required="" id="id_password">
+                            <input class="form-control" type="text" name="username" autofocus="" autocapitalize="none" placeholder="Company Name" autocomplete="username" maxlength="150" required="" id="id_username">
+                            <input class="form-control" type="password" name="password" placeholder='Password' autocomplete="current-password" required="" id="id_password">
                             <div class="form-button">
-                                <button id="submit" type="submit" class="ibtn">Login</button><input type="hidden" name="next" value=""> <a href="forget25.html">Forget password?</a>
+                                <button id="submit" type="submit" class="ibtn">Login</button><input type="hidden" name="next" value=""> <a href="">Forget password?</a>
                             </div>
                         </form>
                         <div class="other-links">

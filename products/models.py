@@ -9,12 +9,13 @@ User = settings.AUTH_USER_MODEL
 
 
 class Product(models.Model):
-    product_name        =   models.CharField(max_length=100,blank=False, null=False)
-    product_manufacturer= models.ForeignKey(User, on_delete=models.CASCADE)
+    product_name        = models.CharField(max_length=100,blank=False, null=False)
+    product_manufacturer= models.CharField(max_length=100,blank=False, null=False)
     product_id          = models.CharField(max_length=50,blank=False, null=False)
     product_image       = models.FileField(upload_to='media',blank=False, null=False)
-    production_date     = models.DateField(auto_now_add=False)
-    expiry_date         = models.DateField(auto_now_add=False)
+    production_date     = models.CharField(max_length=12,blank=True, null=True)
+    product_type        = models.CharField(max_length=100,blank=True, null=True)
+    expiry_date         = models.CharField(max_length=12,blank=True, null=True)
     product_description = models.TextField(max_length=500)
     barcode             = models.FileField(upload_to='media',blank=False, null=False, default='image')
     slug                = models.SlugField(null=True, blank=True)
@@ -42,5 +43,6 @@ class FakeProduct(models.Model):
     longitude    = models.CharField(max_length=1000)
     latitude    = models.CharField(max_length=1000)
     time        = models.DateTimeField(auto_now_add=True)
+    detained    = models.BooleanField(default=False)
     
     objects = FakeProductManager()

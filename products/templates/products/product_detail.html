@@ -414,7 +414,11 @@
 							<div class="gallery-placeholder _block-content-loading"
 								data-gallery-role="gallery-placeholder">
 								{% comment %} <a  href="/project/download" download> Download Document </a> {% endcomment %}
+								{% if item.product_image %}
 								<img alt="main product photo" class="gallery-placeholder__image" src="{{item.product_image.url}}" />
+								{% else %}
+									<img alt='Product Image' class="gallery-placeholder__image" src='{% static 'main/Building.jpg' %}'>
+								{% endif %}
 							</div>
 							
 						</div>
@@ -437,7 +441,7 @@
 								</div>
 								<div>
 								<button style="padding:5px; margin: 5px 10px;"><a  href="/media/{{item.barcode.url}}" download> Download Barcode </a></button>
-								<button  style="padding:5px 15px; margin: 5px 10px; float:left;" onclick="window.print();return false;" /> Print Barcode</button>
+								<button  style="padding:5px 15px; margin: 5px 10px; float:left;" onclick="printImg('/media/{{item.barcode.url}}')" /> Print Barcode</button>
 								</div>
 								{% endif %}
 							</div>
@@ -643,9 +647,7 @@
 						gfg_Run();
 					}
 					setTimeout(myGreeting, 5000);
-					close.onclick = function() {
-						mpopup.style.display = "none";
-					};
+					
 					var long = document.getElementById("longitude");
 					var lat = document.getElementById("latitude");
 					function gfg_Run() {
@@ -665,7 +667,6 @@
 			{% endif %}
 	</div>
 <!-- Link to trigger modal -->
-<a href="javascript:void(0);" class="btn btn-primary" id="mpopupLink">Launch Modal Popup</a>
 
 <!-- Modal popup box -->
 <div id="mpopupBox" class="mpopup">
@@ -695,7 +696,7 @@
                                  <a href="{% url 'index'%}"><img src="{% static "assets/images/FTM.png" %}" alt=""></a>
                               </div>
                               <div class="textwidget widget-text">
-Thank you for considering the Product Identification System for your product tracking needs. We look forward to helping you streamline your product tracking process.                              </div>
+							Thank you for considering the Product Identification System for your product tracking needs. We look forward to helping you streamline your product tracking process.                              </div>
                            </aside>
                         </div>
                         
@@ -754,5 +755,12 @@ Thank you for considering the Product Identification System for your product tra
 	</div>
 	</main>
 </body>
+<script>
+	function printImg(url) {
+  var win = window.open('');
+  win.document.write('<img src="' + url + '" onload="window.print();window.close()" />');
+  win.focus();
+}
+</script>
 
 </html>

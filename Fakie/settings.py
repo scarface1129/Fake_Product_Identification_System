@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'products',
     'users',
+    'company',
 ]
 
 MIDDLEWARE = [
@@ -147,3 +148,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGOUT_REDIRECT_URL="/accounts/login"
 LOGIN_REDIRECT_URL="/"
+
+GOOGLE_API_KEY = "AIzaSyDvDC2xk7maiHPha6hzUP-Gxu11Ue9yr44"
+
+# DATE_FORMAT = '%d-%m-%y'

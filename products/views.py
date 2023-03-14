@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.views.generic import DetailView, View, CreateView, UpdateView, ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import *
+from django.conf import settings
 from django.shortcuts import render,get_object_or_404, redirect
 from .forms import *    
 from users.utils import code_generator
@@ -10,7 +11,9 @@ from django.contrib.sites.shortcuts import get_current_site
 from django.urls import reverse
 from django.http import HttpResponse
 from rest_framework import serializers
+import pandas as pd
 import qrcode
+import pandas as pd
 # from tkinter import *
 # from tkinter import messagebox
 
@@ -20,9 +23,7 @@ class ProductDetail(DetailView):
     def get(self, request, *args, **kwargs):
         pk = self.kwargs['pk']
         products = Product.objects.filter(product_id = pk)
-        # if not products :
-        #     getLocation(request)
-        
+        # create_product_from_nafdac(self)
         context = {'products':products}
         return render(request, 'products/product_detail.html', context )
 
@@ -68,7 +69,8 @@ def Fake(request):
         longitude = request.POST['longitude']
         latitude = request.POST['latitude']
         time = ''
-        Fproduct = FakeProduct.objects.create_fakeProduct(latitude,longitude,time)
+        if longitude and latitude:
+            Fproduct = FakeProduct.objects.create_fakeProduct(latitude,longitude,time)
         
     return HttpResponseRedirect(reverse("index"))
 def generateCode(name,text):
@@ -82,4 +84,63 @@ def generateCode(name,text):
     img.save(f'{fileDirec}.png') 
     return f'{name}.png'
 
+def Map(request):
+    lat_a = request.GET.get("lat", None)
+    long_b = request.GET.get("long", None)
+    id_ = request.GET.get("id", None)
+    context = {
+    "google_api_key": settings.GOOGLE_API_KEY,
+    "lat_a": lat_a,
+    "long_b": long_b,
+    "id": id_,
+    }
+    return render(request, 'products/map.html', context )
+
+class FakeProductList(LoginRequiredMixin,ListView):
+     def get(self, request):	
+        product = FakeProduct.objects.all().order_by('-id')
+        context = {'object_list': product}
+        return render(request, 'products/fake_list.html', context )
     
+def updateFakeProduct(request):
+    if request.method == "POST":
+        id_ = request.POST['id_']
+        product = FakeProduct.objects.get(id=id_)
+        product.detained = True
+        product.save()
+    return HttpResponseRedirect(reverse("products:fake_list"))
+    
+    
+def create_product_from_nafdac(self):
+    df = pd.read_excel(r'NAFDAC.xlsx')
+    for i, row in df.iterrows():
+        # print(row)
+        product_name = row['Product Name']
+        product_manufacturer = row['Manufacturer']
+        product_id    = row['Registration No.']      
+        production_date    = row['Date Approved'] 
+        product_type     = row['Product Type']
+        expiry_date         = row['Expiry Date']
+        product_description  = row['Active Ingredent']
+        
+        if product_name and product_id :
+            product = Product.objects.filter(product_id = product_id)
+            if product.exists():
+                product = product
+            else:
+                scheme = 'https' if self.request.is_secure() else 'http'
+                site = get_current_site(self.request)
+                barcode = generateCode(product_id,'%s://%s' % (scheme, site)+'/product/'+ product_id)
+                new_product = Product.objects.create(
+                product_name = product_name,
+                product_manufacturer = product_manufacturer,
+                product_id    = product_id,
+                production_date    = production_date,
+                product_type     = product_type,
+                expiry_date         = expiry_date,
+                product_description  = product_description,
+                barcode            = barcode
+            )
+                new_product.save()
+        else:
+            print('***')

@@ -1,14 +1,14 @@
 
 <!doctype html>
 <html lang="en">
-   {% load static %}
-   
+    {% load static %}
+<!-- Mirrored from demo.stairthemes.com/html/traveler/single-page.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 27 Sep 2022 22:30:16 GMT -->
 <head>
       <!-- Required meta tags -->
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-     <!-- favicon -->
+      <!-- favicon -->
       <link rel="icon" type="image/png" href="{% static "assets/images/FTM.png" %}">
       <!-- Bootstrap CSS -->
       <link rel="stylesheet" href="{% static "assets/vendors/bootstrap/css/bootstrap.min.css" media="all" %}">
@@ -27,13 +27,11 @@
       <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&amp;family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&amp;display=swap" rel="stylesheet">
       <!-- Custom CSS -->
       <link rel="stylesheet" type="text/css" href="{% static "assets/style.css" %}">
-<title>Fake Product Identification System</title>   </head>
+
+      <title>Fake Product Identification System</title>
+   </head>
    <body>
-      <div id="siteLoader" class="site-loader">
-         <div class="preloader-content">
-            <img src="assets/images/loader1.gif" alt="">
-         </div>
-      </div>
+      
       <div id="page" class="page">
          <!-- ***site header html start*** -->
          <header id="masthead" class="site-header">
@@ -95,17 +93,28 @@
                      <div class="navigation-container d-none d-lg-block">
                         <nav id="navigation" class="navigation">
                            <ul>
-                              <li >
+                              <li class="menu-active">
                                  <a href="{% url 'index' %}">Home</a>
                               </li>
-                              <li class="menu-active">
+                              <li>
                                  <a href="{% url 'about' %}">about us</a>
                               </li>
+                              <li>
+                              {% if request.user.is_authenticated %}
+                                 <a href="{% url 'products:product_create' %}">Create Product</a>
+                              {% endif %}
+                              </li>
+                              {% comment %} <li>
+                                 <form class="newsletter" method="POST" action="{% url 'products:search' %}"> {% csrf_token %}
+                                    <input class='px-5 my-2' required type="text" name="pk" placeholder="Enter Product Serial NO">
+                                    <button type="submit" class="outline-btn outline-btn-dark mx-2 px-3 py-2">Search</button>
+                                 </form>
+                              </li> {% endcomment %}
                            </ul>
                         </nav>
                      </div>
                      <div class="header-btn">
-                        {% if request.user.is_authenticated %}
+                     {% if request.user.is_authenticated %}
                         <a href="{% url 'logout' %}" class="round-btn">LOGOUT</a>
                      {% else %}
                         <a href="{% url 'register' %}" class="round-btn">REGISTER</a>
@@ -118,108 +127,93 @@
          </header>
          <!-- ***site header html end*** -->
          <main id="content" class="site-main">
-            <section class="inner-page-wrap">
-               <!-- ***Inner Banner html start form here*** -->
-               <div class="inner-banner-wrap">
-                  <div class="inner-baner-container" style="background-image: url({% static "assets/images/fake.jpg" %});">
-                     <div class="container">
-                        <div class="inner-banner-content">
-                           <h1 class="page-title">About Us</h1>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-               <!-- ***Inner Banner html end here*** -->
-               <!-- ***about section html start form here*** -->
-               <div class="inner-about-wrap">
+            <!-- ***Inner Banner html start form here*** -->
+            <div class="inner-banner-wrap">
+               <div class="inner-baner-container" style="background-image: url({% static 'assets/images/map.jpg' %});">
                   <div class="container">
-                     <div class="row">
-                        <div class="col-lg-8">
-                           <div class="about-content">
-                              <figure class="about-image">
-                                 <img src="assets/images/img27.jpg" alt="">
-                                 <div class="about-image-content">
-                                    <h3>Our Fake Product Identification System has been the best for detecting counterfeit  products</h3>
-                                 </div>
-                              </figure>
-                              <h2>HOW WE ARE BEST FOR DETECTING FAKE PRODUCT!</h2>
-                              <p>In today's world, detecting fake products has become increasingly difficult. With the rise of e-commerce, counterfeiters have been able to easily create and distribute products that look and feel like the real thing. Fortunately, there are a few ways to detect counterfeit products, and they can help protect customers from wasting their money on fraudulent products.  </p>
-                              <p>The first step to detecting a fake product is to check the packaging. Counterfeiters often try to replicate the packaging of popular brands, but they can rarely do it perfectly. Look for any variations in the font, design, or size of the packaging; any discrepancies could indicate a fake product.</p>
-                              <p>Another way to detect a fake product is to compare it to an authentic version. Check the materials and components used; if they seem different or off in some way, it's likely a fake. Additionally, genuine products will usually have some form of authentication, like a serial number or hologram, that can help you verify its authenticity.
-
-Finally, it's important to be aware of any suspicious deals or prices that may be too good to be true. If a product is being sold for significantly lower than its usual price, it may be a counterfeit. Similarly, sellers who have multiple versions of the same product could be selling fake versions.</p>
-                           </div>
-                           <div class="client-slider white-bg">
-                              <figure class="client-item">
-                                 <img src="assets/images/client-img7.png" alt="">
-                              </figure>
-                              <figure class="client-item">
-                                 <img src="assets/images/client-img8.png" alt="">
-                              </figure>
-                              <figure class="client-item">
-                                 <img src="assets/images/client-img9.png" alt="">
-                              </figure>
-                              <figure class="client-item">
-                                 <img src="assets/images/client-img10.png" alt="">
-                              </figure>
-                              <figure class="client-item">
-                                 <img src="assets/images/client-img11.png" alt="">
-                              </figure>
-                           </div>
-                        </div>
-                        <div class="col-lg-4">
-                           <div class="icon-box">
-                              <div class="box-icon">
-                                 <i aria-hidden="true" class="fas fa-umbrella-beach"></i>
-                              </div>
-                              <div class="icon-box-content">
-                                 <h3>BENEFITS </h3>
-                                 <p>A fake product identification system is a valuable tool for businesses and consumers alike. It allows businesses to quickly and easily identify counterfeit products, thereby reducing costs associated with dealing with fake products and protecting their reputation.</p>
-                              </div>
-                           </div>
-                           <div class="icon-box">
-                              <div class="box-icon">
-                                 <i aria-hidden="true" class="fas fa-user-tag"></i>
-                              </div>
-                              <div class="icon-box-content">
-                                 <h3>USER FRIENDLY</h3>
-                                 <p>The user-friendly aspect of a fake product identification system can be seen in its ease of use and intuitive design. The system allows users to quickly and easily identify fake products by scanning the product code.</p>
-                              </div>
-                           </div>
-                           <div class="icon-box">
-                              <div class="box-icon">
-                                 <i aria-hidden="true" class="fas fa-headset"></i>
-                              </div>
-                              <div class="icon-box-content">
-                                 <h3>CUSTOMER SUPPORT</h3>
-                                 <p>Iure doloremque saepe? Ultrices mi aliquam dis tempore incididunt sint, cumque dis temp!</p>
-                              </div>
-                           </div>
-                        </div>
+                     <div class="inner-banner-content">
+                        <h1 class="page-title">Location of fake product</h1>
                      </div>
                   </div>
                </div>
-               <!-- ***about section html start form here*** -->
-               
-            </section>
+            </div>
+            <!-- ***Inner Banner html end here*** -->
+            <div class="single-page-section">
+
+               <div class="container">
+                  <figure class="single-feature-img">
+                     <img src="{% static 'assets/images/map.jpg' %}" alt="">
+                     <div class="map-container">
+                        <div id="map-route"></div>
+                    </div>
+                  </figure>
+                  <div class="page-content">
+                     <h2>Let's Locate the fake product</h2>
+                     <form method="post" action="{% url 'products:update_fake'%}">
+                     {% csrf_token %}
+                     <input type="hidden" name="id_" value="{{id}}">
+                     <input type="submit" class="outline-btn outline-btn-blue" name="submit" value="Detain the product" >
+                     </form>
+
+                   
+                  </div>
+               </div>
+            </div>
          </main>
          <!-- ***site footer html start form here*** -->
-         <footer id="colophon" class="site-footer footer-primary">
+         {% comment %} <footer id="colophon" class="site-footer footer-primary">
             <div class="top-footer">
                <div class="container">
                   <div class="upper-footer">
                      <div class="row">
-                        <div class="col-lg-6 col-sm-8">
+                        <div class="col-lg-3 col-sm-6">
                            <aside class="widget widget_text">
                               <div class="footer-logo">
-                                 <a href="index.html"><img src="{% static "assets/images/FTM.png" %}" alt=""></a>
+                                 <a href="index.html"><img src="assets/images/site-logo.png" alt=""></a>
                               </div>
                               <div class="textwidget widget-text">
-                                 Thank you for considering the Product Identification System for your product tracking needs. We look forward to helping you streamline your product tracking process.                              </div>
+                                 Urna ratione ante harum provident, eleifend, vulputate molestiae proin fringilla, praesentium magna conubia at perferendis, pretium, aenean aut ultrices.
+                              </div>
                            </aside>
                         </div>
-                        
-                        <div class="col-lg-6 col-sm-8">
+                        <div class="col-lg-3 col-sm-6">
+                           <aside class="widget widget_latest_post widget-post-thumb">
+                              <h3 class="widget-title">RECENT POST</h3>
+                              <ul>
+                                 <li>
+                                    <figure class="post-thumb">
+                                       <a href="blog-archive.html"><img src="assets/images/img21.jpg" alt=""></a>
+                                    </figure>
+                                    <div class="post-content">
+                                       <h6>
+                                          <a href="blog-single.html">BEST JOURNEY TO PEACEFUL PLACES</a>
+                                       </h6>
+                                       <div class="entry-meta">
+                                          <span class="posted-on">
+                                             <a href="blog-archive.html">February 17, 2022</a>
+                                          </span>
+                                       </div>
+                                    </div>
+                                 </li>
+                                 <li>
+                                    <figure class="post-thumb">
+                                       <a href="blog-archive.html"><img src="assets/images/img22.jpg" alt=""></a>
+                                    </figure>
+                                    <div class="post-content">
+                                       <h6>
+                                          <a href="blog-single.html">TRAVEL WITH FRIENDS IS BEST</a>
+                                       </h6>
+                                       <div class="entry-meta">
+                                          <span class="posted-on">
+                                             <a href="blog-archive.html">February 17, 2022</a>
+                                          </span>
+                                       </div>
+                                    </div>
+                                 </li>
+                              </ul>
+                           </aside>
+                        </div>
+                        <div class="col-lg-3 col-sm-6">
                            <aside class="widget widget_text">
                               <h3 class="widget-title">CONTACT US</h3>
                               <div class="textwidget widget-text">
@@ -228,35 +222,127 @@ Finally, it's important to be aware of any suspicious deals or prices that may b
                                     <li>
                                        <a href="tel:+01988256203">
                                           <i aria-hidden="true" class="icon icon-phone1"></i>
-                                          07085427519
+                                          +01(988) 256 203
                                        </a>
                                     </li>
                                     <li>
                                        <a href="mailtop:info@domain.com">
                                           <i aria-hidden="true" class="icon icon-envelope1"></i>
-                                          agboemmanuel002@gmail.com
+                                          info@domain.com
                                        </a>
                                     </li>
                                     <li>
                                        <i aria-hidden="true" class="icon icon-map-marker1"></i>
-                                       No 3 ILLECHUKWU STREET ENUGU NIGERIA
+                                       3146 Koontz, California
                                     </li>
                                  </ul>
                               </div>
                            </aside>
                         </div>
-                        
+                        <div class="col-lg-3 col-sm-6">
+                           <aside class="widget">
+                              <h3 class="widget-title">Gallery</h3>
+                              <div class="gallery gallery-colum-3">
+                                 <figure class="gallery-item">
+                                    <a href="assets/images/img10.jpg" data-fancybox="gallery-1">
+                                       <img src="assets/images/img21.jpg" alt="">
+                                    </a>
+                                 </figure>
+                                 <figure class="gallery-item">
+                                    <a href="assets/images/img28.jpg" data-fancybox="gallery-1">
+                                       <img src="assets/images/img22.jpg" alt="">
+                                    </a>
+                                 </figure>
+                                 <figure class="gallery-item">
+                                    <a href="assets/images/img14.jpg" data-fancybox="gallery-1">
+                                       <img src="assets/images/img23.jpg" alt="">
+                                    </a>
+                                 </figure>
+                                 <figure class="gallery-item">
+                                    <a href="assets/images/img15.jpg" data-fancybox="gallery-1">
+                                       <img src="assets/images/img24.jpg" alt="">
+                                    </a>
+                                 </figure>
+                                 <figure class="gallery-item">
+                                    <a href="assets/images/img12.jpg" data-fancybox="gallery-1">
+                                       <img src="assets/images/img25.jpg" alt="">
+                                    </a>
+                                 </figure>
+                                 <figure class="gallery-item">
+                                    <a href="assets/images/img13.jpg" data-fancybox="gallery-1">
+                                       <img src="assets/images/img26.jpg" alt="">
+                                    </a>
+                                 </figure>
+                              </div>
+                           </aside>
+                        </div>
                      </div>
                   </div>
-                  
+                  <div class="lower-footer">
+                     <div class="row align-items-center">
+                        <div class="col-lg-6">
+                           <div class="footer-newsletter">
+                              <p>Subscribe our newsletter for more update & news !!</p>
+                              <form class="newsletter">
+                                 <input type="email" name="email" placeholder="Enter Your Email">
+                                 <button type="submit" class="outline-btn outline-btn-white">Subscribe</button>
+                              </form>
+                           </div>
+                        </div>
+                        <div class="col-lg-6 text-right">
+                           <div class="social-icon">
+                              <ul>
+                                 <li>
+                                    <a href="https://www.facebook.com/" target="_blank">
+                                       <i class="fab fa-facebook-f" aria-hidden="true"></i>
+                                    </a>
+                                 </li>
+                                 <li>
+                                    <a href="https://www.twitter.com/" target="_blank">
+                                       <i class="fab fa-twitter" aria-hidden="true"></i>
+                                    </a>
+                                 </li>
+                                 <li>
+                                    <a href="https://www.youtube.com/" target="_blank">
+                                       <i class="fab fa-youtube" aria-hidden="true"></i>
+                                    </a>
+                                 </li>
+                                 <li>
+                                    <a href="https://www.instagram.com/" target="_blank">
+                                       <i class="fab fa-instagram" aria-hidden="true"></i>
+                                    </a>
+                                 </li>
+                                 <li>
+                                    <a href="https://www.linkedin.com/" target="_blank">
+                                       <i class="fab fa-linkedin" aria-hidden="true"></i>
+                                    </a>
+                                 </li>
+                              </ul>
+                           </div>
+                           <div class="footer-menu">
+                              <ul>
+                                 <li>
+                                    <a href="policy.html">Privacy Policy</a>
+                                 </li>
+                                 <li>
+                                    <a href="policy.html">Term & Condition</a>
+                                 </li>
+                                 <li>
+                                    <a href="faq.html">FAQ</a>
+                                 </li>
+                              </ul>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
                </div>
             </div>
             <div class="bottom-footer">
                <div class="container">
-                  <div class="copy-right text-center">Copyright &copy; 2023 FAKIE. All rights reserved.</div>
+                  <div class="copy-right text-center">Copyright &copy; 2022 Traveler. All rights reserved.</div>
                </div>
             </div>
-         </footer>
+         </footer> {% endcomment %}
          <!-- ***site footer html end*** -->
          <a id="backTotop" href="#" class="to-top-icon">
             <i class="fas fa-chevron-up"></i>
@@ -338,8 +424,33 @@ Finally, it's important to be aware of any suspicious deals or prices that may b
          <!-- ***custom top bar offcanvas html*** -->
       </div>
 
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+<script type="text/javascript">
+    var google_api_key = "{{google_api_key|safe}}";
+    var lat_a = {{lat_a|safe}};
+    var long_b = {{long_b|safe}};
+
+    $.getScript( "https://maps.googleapis.com/maps/api/js?key=" + google_api_key + "&libraries=places") 
+.done(function( script, textStatus ) {
+    google.maps.event.addDomListener(window, "load", initMap)
+
+})
+
+
+function initMap() {
+    var directionsService = new google.maps.DirectionsService;
+    var directionsDisplay = new google.maps.DirectionsRenderer;
+    var map = new google.maps.Map(document.getElementById('map-route'), {
+        zoom: 7,
+        center: {lat: lat_a, lng: long_b}
+    });
+    directionsDisplay.setMap(map);
+
+}
+</script>
       <!-- JavaScript -->
-      <script src="{% static "assets/vendors/jquery/jquery.js" %}"></script>
+       <script src="{% static "assets/vendors/jquery/jquery.js" %}"></script>
       <script src="{% static "assets/vendors/waypoint/waypoints.js" %}"></script>
       <script src="{% static "assets/vendors/bootstrap/js/bootstrap.min.js" %}"></script>
       <script src="{% static "assets/vendors/jquery-ui/jquery-ui.min.js" %}"></script>
@@ -353,5 +464,5 @@ Finally, it's important to be aware of any suspicious deals or prices that may b
       <script src="{% static "assets/js/custom.min.js" %}"></script>
    </body>
 
-<!-- Mirrored from demo.stairthemes.com/html/traveler/about.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 27 Sep 2022 22:29:30 GMT -->
+<!-- Mirrored from demo.stairthemes.com/html/traveler/single-page.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 27 Sep 2022 22:30:16 GMT -->
 </html>

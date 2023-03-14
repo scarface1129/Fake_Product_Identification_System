@@ -31,8 +31,8 @@
             <div class="form-holder">
                 <div class="form-content">
                     <div class="form-items">
-                        <h3>Register new account</h3>
-                        <p>Access to the most powerfull tool in the entire design and web industry.</p>
+                        <h3>Register Company</h3>
+                        <p>Register your comapny with us to keep track of your product in the market</p>
                          {% comment %} {% if form.errors.non_field_errors %}
                             {{ form.errors.non_field_errors }}
                         {% endif%} {% endcomment %}
@@ -50,8 +50,8 @@
                         {% endif %}
                         {% endif %}
                         <form action="{% url 'register' %}" method="POST" enctype="multipart/form-data">{% csrf_token %}
-                            <input class="form-control" type="text" name="username" maxlength="150" required="" id="id_username" placeholder="Username">
-                            <input class="form-control" type="text" type="email" name="email" maxlength="254" id="id_email" placeholder="E-mail Address">
+                            <input class="form-control" type="text" name="username" maxlength="150" required="" id="id_username" placeholder="Company Name">
+                            <input class="form-control" type="text" type="email" name="email" maxlength="254" id="id_email" placeholder="Company E-mail Address">
                             <input class="form-control" type="password" name="password1" required="" id="id_password1" placeholder="Password">
                             <input class="form-control" type="password" name="password2" placeholder="Repeat Password" required="" id="id_password2">
                             <div class="form-button">
@@ -65,7 +65,7 @@
                             <a href="#"><i class="fab fa-facebook-f"></i>Facebook</a><a href="#"><i class="fab fa-google"></i>Google</a><a href="#"><i class="fab fa-linkedin-in"></i>Linkedin</a> {% endcomment %}
                         </div>
                         <div class="page-links">
-                            <a href="{% url 'login'%}">Login to account</a>
+                            <a href="{% url 'login'%}">Login to company account</a>
                             
                         </div>
                     </div>

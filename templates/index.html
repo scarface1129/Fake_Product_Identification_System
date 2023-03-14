@@ -73,7 +73,7 @@
             <div class="bottom-header">
                <div class="container">
                   <div class="bottom-header-inner d-flex justify-content-between align-items-center">
-                     <div class="header-social social-icon">
+                  <div class="header-social social-icon">
                         <ul>
                            <li>
                               <a href="https://www.facebook.com/" target="_blank">
@@ -92,20 +92,36 @@
                            </li>
                         </ul>
                      </div>
+                     
                      <div class="navigation-container d-none d-lg-block">
                         <nav id="navigation" class="navigation">
                            <ul>
+                           
                               <li class="menu-active">
                                  <a href="{% url 'index' %}">Home</a>
                               </li>
                               <li>
                                  <a href="{% url 'about' %}">about us</a>
                               </li>
-                              <li>
-                              {% if request.user.is_authenticated %}
-                                 <a href="{% url 'products:product_create' %}">Create Product</a>
-                              {% endif %}
+                              
+                              <{% if request.user.is_superuser %}
+                              <li class="menu-item-has-children">
+                                 <a href="#">Admin</a>
+                                 <ul>
+                                    <li>
+                                       <a href="/admin">Admin Panel</a>
+                                    </li>
+                                    <li>
+                                       <a href="{% url 'products:product_create' %}">Create Product</a>
+                                    </li>
+                                    <li>
+                                       <a href="{% url 'products:fake_list' %}">Fake Products</a>
+                                    </li>
+                                    
+                                 </ul>
                               </li>
+                              {% endif %}
+
                               <li>
                                  <form class="newsletter" method="POST" action="{% url 'products:search' %}"> {% csrf_token %}
                                     <input class='px-5 my-2' required type="text" name="pk" placeholder="Enter Product Serial NO">
@@ -119,7 +135,7 @@
                      {% if request.user.is_authenticated %}
                         <a href="{% url 'logout' %}" class="round-btn">LOGOUT</a>
                      {% else %}
-                        <a href="{% url 'register' %}" class="round-btn">REGISTER</a>
+                        <a href="{% url 'register' %}" class="round-btn">REGISTER COMPANY</a>
                      {% endif %}
                      </div>
                   </div>
@@ -144,7 +160,9 @@ We are an innovative product identification system that provides unique identifi
 </p>
                               <div class="banner-btn">
                                  <a href="{% url 'about' %}" class="round-btn">LEARN MORE</a>
+                                 {% if not request.user.is_authenticated %}
                                  <a href="{% url 'register' %}" class="outline-btn outline-btn-white">REGISTER</a>
+                                 {% endif %}
                               </div>
                            </div>
                         </div>

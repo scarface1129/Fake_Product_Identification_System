@@ -2,13 +2,13 @@
 <!doctype html>
 <html lang="en">
    {% load static %}
-   
+<!-- Mirrored from demo.stairthemes.com/html/traveler/package.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 27 Sep 2022 22:29:30 GMT -->
 <head>
       <!-- Required meta tags -->
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-     <!-- favicon -->
+       <!-- favicon -->
       <link rel="icon" type="image/png" href="{% static "assets/images/FTM.png" %}">
       <!-- Bootstrap CSS -->
       <link rel="stylesheet" href="{% static "assets/vendors/bootstrap/css/bootstrap.min.css" media="all" %}">
@@ -27,7 +27,9 @@
       <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&amp;family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&amp;display=swap" rel="stylesheet">
       <!-- Custom CSS -->
       <link rel="stylesheet" type="text/css" href="{% static "assets/style.css" %}">
-<title>Fake Product Identification System</title>   </head>
+      <title>Fake Product Identification System</title>
+
+   </head>
    <body>
       <div id="siteLoader" class="site-loader">
          <div class="preloader-content">
@@ -36,7 +38,7 @@
       </div>
       <div id="page" class="page">
          <!-- ***site header html start*** -->
-         <header id="masthead" class="site-header">
+          <header id="masthead" class="site-header">
             <!-- header html start -->
             <div class="top-header">
                <div class="container">
@@ -95,17 +97,23 @@
                      <div class="navigation-container d-none d-lg-block">
                         <nav id="navigation" class="navigation">
                            <ul>
-                              <li >
+                              <li class="menu-active">
                                  <a href="{% url 'index' %}">Home</a>
                               </li>
-                              <li class="menu-active">
+                              <li>
                                  <a href="{% url 'about' %}">about us</a>
                               </li>
+                              <li>
+                              {% if request.user.is_authenticated %}
+                                 <a href="{% url 'products:product_create' %}">Create Product</a>
+                              {% endif %}
+                              </li>
+                             
                            </ul>
                         </nav>
                      </div>
                      <div class="header-btn">
-                        {% if request.user.is_authenticated %}
+                     {% if request.user.is_authenticated %}
                         <a href="{% url 'logout' %}" class="round-btn">LOGOUT</a>
                      {% else %}
                         <a href="{% url 'register' %}" class="round-btn">REGISTER</a>
@@ -121,90 +129,76 @@
             <section class="inner-page-wrap">
                <!-- ***Inner Banner html start form here*** -->
                <div class="inner-banner-wrap">
-                  <div class="inner-baner-container" style="background-image: url({% static "assets/images/fake.jpg" %});">
+                  <div class="inner-baner-container" style="background-image: url({% static 'assets/images/download.jpg' %});">
                      <div class="container">
                         <div class="inner-banner-content">
-                           <h1 class="page-title">About Us</h1>
+                           <h1 class="page-title">Fake Products</h1>
                         </div>
                      </div>
                   </div>
                </div>
                <!-- ***Inner Banner html end here*** -->
-               <!-- ***about section html start form here*** -->
-               <div class="inner-about-wrap">
+               <!-- ***package section html start form here*** -->
+               <div class="package-item-wrap">
                   <div class="container">
-                     <div class="row">
-                        <div class="col-lg-8">
-                           <div class="about-content">
-                              <figure class="about-image">
-                                 <img src="assets/images/img27.jpg" alt="">
-                                 <div class="about-image-content">
-                                    <h3>Our Fake Product Identification System has been the best for detecting counterfeit  products</h3>
-                                 </div>
-                              </figure>
-                              <h2>HOW WE ARE BEST FOR DETECTING FAKE PRODUCT!</h2>
-                              <p>In today's world, detecting fake products has become increasingly difficult. With the rise of e-commerce, counterfeiters have been able to easily create and distribute products that look and feel like the real thing. Fortunately, there are a few ways to detect counterfeit products, and they can help protect customers from wasting their money on fraudulent products.  </p>
-                              <p>The first step to detecting a fake product is to check the packaging. Counterfeiters often try to replicate the packaging of popular brands, but they can rarely do it perfectly. Look for any variations in the font, design, or size of the packaging; any discrepancies could indicate a fake product.</p>
-                              <p>Another way to detect a fake product is to compare it to an authentic version. Check the materials and components used; if they seem different or off in some way, it's likely a fake. Additionally, genuine products will usually have some form of authentication, like a serial number or hologram, that can help you verify its authenticity.
+                  {% for item in object_list %}
+                     <article class="package-item">
+                        <div class="package-content">
+                           <h3>
+                              <p href="package-detail.html">
+                                 This product was scanned at 
+                              </p>
+                           </h3>
+                           <p>{{item.time}}</p>
+                           <div class="package-meta">
+                              <ul>
+                                 <li>
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    Lat: {{ item.latitude }}
+                                 </li>
+                                
+                                 <li>
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    Long: {{item.longitude}}
+                                 </li>
+                              </ul>
+                           </div>
+                        </div>
+                        {% if not item.detained %}
+                        <div class="package-price" style='background-color:rgb(228 24 12 / 85%);'>
+                           <div class="review-area">
+                              <span class="review-text">View location on map</span>
+                              
+                           </div>
+                           
+                           <a href="{% url 'products:map' %}?id={{item.id}}&long={{item.longitude}},lat={{item.latitude}}" class="outline-btn outline-btn-white">MAP</a>
+                              <span style='margin-top:5px;'> Not Detained</span>
 
-Finally, it's important to be aware of any suspicious deals or prices that may be too good to be true. If a product is being sold for significantly lower than its usual price, it may be a counterfeit. Similarly, sellers who have multiple versions of the same product could be selling fake versions.</p>
-                           </div>
-                           <div class="client-slider white-bg">
-                              <figure class="client-item">
-                                 <img src="assets/images/client-img7.png" alt="">
-                              </figure>
-                              <figure class="client-item">
-                                 <img src="assets/images/client-img8.png" alt="">
-                              </figure>
-                              <figure class="client-item">
-                                 <img src="assets/images/client-img9.png" alt="">
-                              </figure>
-                              <figure class="client-item">
-                                 <img src="assets/images/client-img10.png" alt="">
-                              </figure>
-                              <figure class="client-item">
-                                 <img src="assets/images/client-img11.png" alt="">
-                              </figure>
-                           </div>
                         </div>
-                        <div class="col-lg-4">
-                           <div class="icon-box">
-                              <div class="box-icon">
-                                 <i aria-hidden="true" class="fas fa-umbrella-beach"></i>
-                              </div>
-                              <div class="icon-box-content">
-                                 <h3>BENEFITS </h3>
-                                 <p>A fake product identification system is a valuable tool for businesses and consumers alike. It allows businesses to quickly and easily identify counterfeit products, thereby reducing costs associated with dealing with fake products and protecting their reputation.</p>
-                              </div>
+                        {% else %}
+                        <div class="package-price">
+                           <div class="review-area">
+                              <span class="review-text">View location on map</span>
+                              
                            </div>
-                           <div class="icon-box">
-                              <div class="box-icon">
-                                 <i aria-hidden="true" class="fas fa-user-tag"></i>
-                              </div>
-                              <div class="icon-box-content">
-                                 <h3>USER FRIENDLY</h3>
-                                 <p>The user-friendly aspect of a fake product identification system can be seen in its ease of use and intuitive design. The system allows users to quickly and easily identify fake products by scanning the product code.</p>
-                              </div>
-                           </div>
-                           <div class="icon-box">
-                              <div class="box-icon">
-                                 <i aria-hidden="true" class="fas fa-headset"></i>
-                              </div>
-                              <div class="icon-box-content">
-                                 <h3>CUSTOMER SUPPORT</h3>
-                                 <p>Iure doloremque saepe? Ultrices mi aliquam dis tempore incididunt sint, cumque dis temp!</p>
-                              </div>
-                           </div>
+                           
+                           <a href="{% url 'products:map' %}?id={{item.id}}&long={{item.longitude}}&lat={{item.latitude}}" class="outline-btn outline-btn-white">MAP</a>
+                              <span style='margin-top:5px;'>Detained</span>
+
                         </div>
-                     </div>
+                        {% endif %}
+                     </article>
+                  {% endfor %}
                   </div>
                </div>
-               <!-- ***about section html start form here*** -->
+               <!-- ***package section html start form here*** -->
+               <!-- ***client section html start form here*** -->
                
+               <!-- ***clinet section html end here*** -->
             </section>
          </main>
          <!-- ***site footer html start form here*** -->
-         <footer id="colophon" class="site-footer footer-primary">
+         <footer id="colophon" class="site-footer footer-primary" style='clear:both;'>
             <div class="top-footer">
                <div class="container">
                   <div class="upper-footer">
@@ -353,5 +347,5 @@ Finally, it's important to be aware of any suspicious deals or prices that may b
       <script src="{% static "assets/js/custom.min.js" %}"></script>
    </body>
 
-<!-- Mirrored from demo.stairthemes.com/html/traveler/about.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 27 Sep 2022 22:29:30 GMT -->
+<!-- Mirrored from demo.stairthemes.com/html/traveler/package.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 27 Sep 2022 22:29:30 GMT -->
 </html>
