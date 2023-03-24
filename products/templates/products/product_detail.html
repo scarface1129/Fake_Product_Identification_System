@@ -238,10 +238,10 @@
 									<div class="settings-close"><span class="main-icon-close"></span></div>
 								</div>
 								<div class="settings-inner">
-									<ul class="header links">
+									{% comment %} <ul class="header links">
 										<li class="link authorization-link" data-label="or">
 											<a
-												href="customer/account/login/referer/aHR0cHM6Ly9ibHVlc2t5dGVjaG1hZ2UuY29tL291dHN0b2NrX3YyL2VuMS9ib3R0bGUtZ3JpbmRlci13aXRoLXN0ZWVsLWxpZC5odG1s/index.html">Sign
+												href="{% url 'login' %}">Sign
 												In
 											</a>
 										</li>
@@ -249,7 +249,7 @@
 											<a href="{% url 'register' %}" id="idxZ3HxrJ0">Create an
 												Account</a>
 										</li>
-									</ul>
+									</ul> {% endcomment %}
 									{% comment %} <div class="language-currency">
 										<div class="container-setting-language-currency">
 											<div class="switcher language switcher-language"
@@ -417,7 +417,7 @@
 								{% if item.product_image %}
 								<img alt="main product photo" class="gallery-placeholder__image" src="{{item.product_image.url}}" />
 								{% else %}
-									<img alt='Product Image' class="gallery-placeholder__image" src='{% static 'main/Building.jpg' %}'>
+									<img alt='Product Image' class="gallery-placeholder__image" src='{% static 'main/auth.jpg' %}'>
 								{% endif %}
 							</div>
 							

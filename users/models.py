@@ -5,7 +5,6 @@ from django.urls import reverse
 from django.core.mail import send_mail
 from django.db.models.signals import post_save
 from django.conf import settings
-from company.models import Company
 from django.conf import settings
 
 
@@ -40,10 +39,4 @@ def send_activation_email(self):
                     html_message=html_message)
             
             return sent_mail
-def post_save_user_receiver(sender, instance, created, *args, **kwargs):
-    if created:
-        profile, is_created = User.objects.get_or_create(user=instance)
-        
 
-
-post_save.connect(post_save_user_receiver, sender=Company)
